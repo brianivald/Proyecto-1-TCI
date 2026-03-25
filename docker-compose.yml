@@ -4,10 +4,10 @@ services:
     container_name: tienda_postgres_db
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password123
+      POSTGRES_PASSWORD: admin
       POSTGRES_DB: tienda_abarrotes
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -19,7 +19,7 @@ services:
     build: .
     container_name: tienda_node_web
     ports:
-      - "3001:3000"
+      - "3000:3000"
     networks:
       - servidores_Web
       - servidores_DB
@@ -33,6 +33,6 @@ volumes:
 
 networks:
   servidores_Web:
-    external: true
+    external: false
   servidores_DB:
-    external: true
+    external: false

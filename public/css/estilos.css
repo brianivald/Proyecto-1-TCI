@@ -1,0 +1,80 @@
+/* Estilos base */
+:root {
+    --primario: #4CAF50;
+    --secundario: #2196F3;
+    --peligro: #f44336;
+    --texto: #333;
+    --fondo: #f5f5f5;
+    --bordes: #ddd;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--fondo); color: var(--texto); }
+
+/* Navegación */
+.navbar {
+    background-color: var(--texto); color: white;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem;
+}
+.navbar .logo { font-size: 1.5rem; font-weight: bold; }
+.nav-links { list-style: none; display: flex; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; }
+.nav-links a:hover, .nav-links a.active { background-color: #555; }
+
+/* Contenedor principal */
+.contenedor { padding: 20px; max-width: 1200px; margin: auto; }
+.vista { display: none; }
+.vista.activa { display: flex; gap: 20px; }
+#vista-productos.activa { display: block; }
+
+/* Paneles de Ventas */
+.panel-izquierdo { flex: 2; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.panel-derecho { flex: 1; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+
+/* Grid Productos */
+.lista-productos-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;
+}
+.tarjeta-producto {
+    border: 1px solid var(--bordes); border-radius: 5px; padding: 15px; text-align: center; background: #fff;
+    transition: transform 0.2s;
+}
+.tarjeta-producto:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.tarjeta-producto h4 { margin-bottom: 5px; }
+.tarjeta-producto p { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+.precio-tag { font-weight: bold; color: var(--primario); font-size: 1.1em; }
+
+/* Botones */
+button { border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; color: white; }
+button:disabled { background-color: #ccc !important; cursor: not-allowed; }
+.btn-icono { width: 35px; height: 35px; border-radius: 50%; font-size: 1.2em; display: inline-flex; justify-content: center; align-items: center; }
+.btn-primario { background-color: var(--secundario); }
+.btn-secundario { background-color: var(--primario); }
+.btn-peligro { background-color: var(--peligro); }
+.btn-principal { background-color: var(--primario); width: 100%; padding: 15px; font-size: 1.1em; margin-top: 15px; }
+
+/* Carrito */
+.carrito { flex-grow: 1; overflow-y: auto; margin: 15px 0; max-height: 400px; }
+.item-carrito { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0; }
+.item-detalles { flex-grow: 1; }
+.item-carrito-btn { background: none; color: var(--peligro); font-size: 1.5em; cursor: pointer; }
+
+/* Formularios y Tablas */
+.acciones-productos { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+form { display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr 1fr auto; align-items: center; margin-top: 15px; }
+input { padding: 10px; border: 1px solid var(--bordes); border-radius: 4px; }
+.tabla { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.tabla th, .tabla td { padding: 12px; text-align: left; border-bottom: 1px solid var(--bordes); }
+.tabla th { background-color: var(--texto); color: white; }
+.tabla tr:hover { background-color: #f9f9f9; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+.modal-contenido { background-color: #fff; margin: 15% auto; padding: 20px; border-radius: 8px; width: 400px; }
+.cerrar { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.cerrar:hover { color: black; }
+.grupo-input { margin: 15px 0; }
+.grupo-input label { display: block; margin-bottom: 5px; font-weight: bold; }
+.grupo-input input { width: 100%; font-size: 1.2em; }
+.oculto { display: none !important; }

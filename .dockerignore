@@ -1,0 +1,7 @@
+node_modules
+.npm
+*.log
+docker-compose.yml
+init.sql
+Dockerfile
+.dockerignore

@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:15
+    container_name: tienda_postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: tienda_abarrotes
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - servidores_DB
+    restart: unless-stopped
+
+  web:
+    build: .
+    container_name: tienda_node_web
+    ports:
+      - "3001:3000"
+    networks:
+      - servidores_Web
+      - servidores_DB
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    external: false
+
+networks:
+  servidores_Web:
+    external: true
+  servidores_DB:
+    external: true
